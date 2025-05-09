@@ -1,0 +1,61 @@
+can you also add 
+def get_stock_fundamentals(self, symbol: str) -> str:
+        """Use this function to get fundamental data for a given stock symbol yfinance API.
+        Args:
+            symbol (str): The stock symbol.
+        Returns:
+            str: A JSON string containing fundamental data or an error message.
+                Keys:
+                    - 'symbol': The stock symbol.
+                    - 'company_name': The long name of the company.
+                    - 'sector': The sector to which the company belongs.
+                    - 'industry': The industry to which the company belongs.
+                    - 'market_cap': The market capitalization of the company.
+                    - 'pe_ratio': The forward price-to-earnings ratio.
+                    - 'pb_ratio': The price-to-book ratio.
+                    - 'dividend_yield': The dividend yield.
+                    - 'eps': The trailing earnings per share.
+                    - 'beta': The beta value of the stock.
+                    - '52_week_high': The 52-week high price of the stock.
+                    - '52_week_low': The 52-week low price of the stock.
+        """
+        try:
+            stock = yf.Ticker(symbol)
+            info = stock.info
+            fundamentals = {
+                "symbol": symbol,
+                "company_name": info.get("longName", ""),
+                "sector": info.get("sector", ""),
+                "industry": info.get("industry", ""),
+                "market_cap": info.get("marketCap", "N/A"),
+                "pe_ratio": info.get("forwardPE", "N/A"),
+                "pb_ratio": info.get("priceToBook", "N/A"),
+                "dividend_yield": info.get("dividendYield", "N/A"),
+                "eps": info.get("trailingEps", "N/A"),
+                "beta": info.get("beta", "N/A"),
+                "52_week_high": info.get("fiftyTwoWeekHigh", "N/A"),
+                "52_week_low": info.get("fiftyTwoWeekLow", "N/A"),
+            }
+            return json.dumps(fundamentals, indent=2)
+        except Exception as e:
+            return f"Error getting fundamentals for {symbol}: {e}"
+
+def get_key_financial_ratios(self, symbol: str) -> str:
+        """Use this function to get key financial ratios for a given stock symbol.
+        Args:
+        symbol (str): The stock symbol.
+        Returns:
+        dict: JSON containing key financial ratios.
+        """
+        try:
+            stock = yf.Ticker(symbol)
+            key_ratios = stock.info
+            return json.dumps(key_ratios, indent=2)
+        except Exception as e:
+            return f"Error fetching key financial ratios for {symbol}: {e}"
+
+
+can you add those tool
+
+
+https://claude.ai/chat/5e526507-2af9-450e-9431-1bf7ef59671a
