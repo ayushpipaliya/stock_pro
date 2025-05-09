@@ -317,7 +317,7 @@ class EnhancedYFinanceTools:
             
             # Send request with headers to mimic browser
             headers = {
-                'User-Agent': 'Mozilla/5.0'
+                'User-Agent': 'Mozilla/5.0 '
             }
             
             print(f"Fetching data from: {base_url}")
@@ -442,7 +442,7 @@ class EnhancedYFinanceTools:
             if 'Close' not in df.columns and 'Adj Close' in df.columns:
                 df['Close'] = df['Adj Close']
             
-            # print(df.head())
+            print(df.head())
             return df
             
         except Exception as e:
